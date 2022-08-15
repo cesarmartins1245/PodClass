@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "335208808349",
+    "project_id": "podclass-7089a",
+    "storage_bucket": "podclass-7089a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335208808349:android:463e98ae83ebc9a85c3974",
+        "android_client_info": {
+          "package_name": "com.example.audio_teste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335208808349-ta3ipkf4enbfmdr4ddt7rhiph7eg4bj9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7E89YYJQlivHlM6Lxlif4rV5EimvB_7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335208808349-ta3ipkf4enbfmdr4ddt7rhiph7eg4bj9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "335208808349-t2l4ra4bbteaochrm2iqttle2q8f8jr4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.audioTeste"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
