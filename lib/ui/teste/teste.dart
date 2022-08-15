@@ -28,15 +28,16 @@ class _FireBasePageState extends State<FireBasePage> {
     super.initState();
   }
 
-  loadVideoPlayer() {
+  loadVideoPlayer() async {
     // FirebaseStorage storage = FirebaseStorage.instance;
-    // Reference ref = storage.ref().child(pathname )
-    controller = VideoPlayerController.network(
-        'https://www.youtube.com/watch?v=dmZ9Tg9k13U&ab_channel=JohannesMilke');
+    // Reference ref = storage.ref().child("files/VID-20220418-WA0005.mp4");
+    // ref.getDownloadURL();
+    controller = VideoPlayerController.network("https://firebasestorage.googleapis.com/v0/b/podclass-7089a.appspot.com/o/files%2FVID-20210910-WA0005.mp4?alt=media&token=ca879af7-82b5-4d93-b685-51c7fcb96093");
     controller.addListener(() {
       setState(() {});
     });
     controller.initialize().then((value) {
+      controller.play();
       setState(() {});
     });
   }
@@ -50,7 +51,7 @@ class _FireBasePageState extends State<FireBasePage> {
         centerTitle: true,
       ),
       body: Container(
-        padding: EdgeInsets.all(32),
+        padding: EdgeInsets.all(8),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
