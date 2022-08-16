@@ -2,6 +2,7 @@
 
 import 'package:audio_teste/ui/home_page/home.dart';
 import 'package:audio_teste/ui/teste/teste.dart';
+import 'package:audio_teste/ui/teste/video_player.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FireBasePage(),
+      home: videoPlayer(),
     );
   }
 }

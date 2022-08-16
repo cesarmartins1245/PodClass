@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:audio_teste/services/firebase_api.dart';
 import 'package:audio_teste/ui/teste/button_widget/button_widget.dart';
+import 'package:audio_teste/ui/teste/video_player.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -24,23 +25,23 @@ class _FireBasePageState extends State<FireBasePage> {
   late VideoPlayerController controller;
   @override
   void initState() {
-    loadVideoPlayer();
     super.initState();
   }
 
-  loadVideoPlayer() async {
-    // FirebaseStorage storage = FirebaseStorage.instance;
-    // Reference ref = storage.ref().child("files/VID-20220418-WA0005.mp4");
-    // ref.getDownloadURL();
-    controller = VideoPlayerController.network("https://firebasestorage.googleapis.com/v0/b/podclass-7089a.appspot.com/o/files%2FVID-20210910-WA0005.mp4?alt=media&token=ca879af7-82b5-4d93-b685-51c7fcb96093");
-    controller.addListener(() {
-      setState(() {});
-    });
-    controller.initialize().then((value) {
-      controller.play();
-      setState(() {});
-    });
-  }
+  // loadVideoPlayer() async {
+  //   // FirebaseStorage storage = FirebaseStorage.instance;
+  //   // Reference ref = storage.ref().child("files/VID-20220418-WA0005.mp4");
+  //   // ref.getDownloadURL();
+  //   controller = VideoPlayerController.network(
+  //       "https://firebasestorage.googleapis.com/v0/b/podclass-7089a.appspot.com/o/files%2FVID-20210910-WA0005.mp4?alt=media&token=ca879af7-82b5-4d93-b685-51c7fcb96093");
+  //   controller.addListener(() {
+  //     setState(() {});
+  //   });
+  //   controller.initialize().then((value) {
+  //     controller.play();
+  //     setState(() {});
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -71,42 +72,7 @@ class _FireBasePageState extends State<FireBasePage> {
                 text: 'Upload file',
                 onClicked: uploadFile,
               ),
-              AspectRatio(
-                aspectRatio: controller.value.aspectRatio,
-                child: VideoPlayer(controller),
-              ),
-              Text("Total Duration: " + controller.value.duration.toString()),
-              VideoProgressIndicator(controller,
-                  allowScrubbing: true,
-                  colors: VideoProgressColors(
-                    backgroundColor: Colors.redAccent,
-                    playedColor: Colors.green,
-                    bufferedColor: Colors.purple,
-                  )),
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        if (controller.value.isPlaying) {
-                          controller.pause();
-                        } else {
-                          controller.play();
-                        }
-                        setState(() {});
-                      },
-                      icon: Icon(controller.value.isPlaying
-                          ? Icons.pause
-                          : Icons.play_arrow)),
-                  IconButton(
-                      onPressed: () {
-                        controller.seekTo(Duration(seconds: 0));
-                        setState(
-                          () {},
-                        );
-                      },
-                      icon: Icon(Icons.stop)),
-                ],
-              ),
+              // videoPlayer(),
             ],
           ),
         ),
@@ -119,9 +85,11 @@ class _FireBasePageState extends State<FireBasePage> {
 
     if (result == null) return;
     final path = result.files.single.path!;
-    setState(() {
-      file = File(path);
-    });
+    setState(
+      () {
+        file = File(path);
+      },
+    );
   }
 
   Future uploadFile() async {
