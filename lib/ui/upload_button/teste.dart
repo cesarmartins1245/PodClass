@@ -3,13 +3,11 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:audio_teste/services/firebase_api.dart';
-import 'package:audio_teste/ui/teste/button_widget/button_widget.dart';
-import 'package:audio_teste/ui/teste/video_player.dart';
+import 'package:audio_teste/ui/upload_button/button_widget/button_widget.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:video_player/video_player.dart';
 
 class FireBasePage extends StatefulWidget {
@@ -72,7 +70,6 @@ class _FireBasePageState extends State<FireBasePage> {
                 text: 'Upload file',
                 onClicked: uploadFile,
               ),
-              // videoPlayer(),
             ],
           ),
         ),

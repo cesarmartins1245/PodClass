@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:audio_teste/ui/home_page/home.dart';
-import 'package:audio_teste/ui/teste/teste.dart';
-import 'package:audio_teste/ui/teste/video_player.dart';
+import 'package:audio_teste/ui/upload_button/teste.dart';
+import 'package:audio_teste/ui/upload_button/video_player.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
