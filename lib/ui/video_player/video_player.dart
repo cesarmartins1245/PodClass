@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_final_fields, unused_field
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, unused_field, non_constant_identifier_names
 
+import 'package:audio_teste/ui/video_player/card_video.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -44,109 +45,91 @@ class _VideoPlayerState extends State<VideoPlayer> {
   @override
   Widget build(BuildContext context) => Stack(
         children: [
-          YoutubePlayerBuilder(
-            player: YoutubePlayer(controller: controller),
-            builder: (context, player) => Scaffold(
-              // appBar: AppBar(title: Text('youtube player')),
-              body: ListView(
+          YoutubePlayer(controller: controller),
+          Scaffold(
+            body: Container(
+              color: Colors.grey.shade800,
+              child: Column(
                 children: [
-                  player,
+                  SizedBox(height: 20),
+                  CardVideoYt(),
                   SizedBox(
                     height: 16,
                   ),
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    elevation: 15,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.skip_previous_sharp,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            const url =
-                                'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
-                            controller.load(YoutubePlayer.convertUrlToId(url)!);
-                          },
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.replay_10_sharp,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            const url =
-                                'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
-                            controller.load(YoutubePlayer.convertUrlToId(url)!);
-                          },
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            (_isPlaying == false)
-                                ? Icons.play_arrow_sharp
-                                : Icons.pause,
-                            size: 35,
-                          ),
-                          onPressed: () {
-                            (_isPlaying == false)
-                                ? controller.play()
-                                : controller.pause();
-                            (_isPlaying == false)
-                                ? (_isPlaying = true)
-                                : (_isPlaying = false);
-                            setState(() {});
-                          },
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.forward_10_sharp,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            const url =
-                                'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
-                            controller.load(YoutubePlayer.convertUrlToId(url)!);
-                          },
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.skip_next_sharp,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            const url =
-                                'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
-                            controller.load(YoutubePlayer.convertUrlToId(url)!);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                  ControllerBar(),
                 ],
               ),
             ),
           ),
-          Container(
-            child: Column(
-              children: [
-                Image.network('https://picsum.photos/300/200'),
-                Text(
-                  'Titulo da musica aqui',
-                  style: TextStyle(fontSize: 12, color: Colors.black),
-                ),
-                Text(
-                  'autor aqui',
-                  style: TextStyle(fontSize: 8, color: Colors.black),
-                ),
-              ],
-            ),
-            color: Colors.white,
-            height: 230,
-            width: 360,
-          ),
         ],
       );
+
+  Card ControllerBar() {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      elevation: 15,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            icon: Icon(
+              Icons.skip_previous_sharp,
+              size: 30,
+            ),
+            onPressed: () {
+              const url =
+                  'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
+              controller.load(YoutubePlayer.convertUrlToId(url)!);
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.replay_10_sharp,
+              size: 30,
+            ),
+            onPressed: () {
+              const url =
+                  'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
+              controller.load(YoutubePlayer.convertUrlToId(url)!);
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              (_isPlaying == false) ? Icons.play_arrow_sharp : Icons.pause,
+              size: 35,
+            ),
+            onPressed: () {
+              (_isPlaying == false) ? controller.play() : controller.pause();
+              (_isPlaying == false)
+                  ? (_isPlaying = true)
+                  : (_isPlaying = false);
+              setState(() {});
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.forward_10_sharp,
+              size: 30,
+            ),
+            onPressed: () {
+              const url =
+                  'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
+              print(YoutubePlayer.convertUrlToId(url)!);
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.skip_next_sharp,
+              size: 30,
+            ),
+            onPressed: () {
+              const url =
+                  'https://www.youtube.com/watch?v=GQyWIur03aw&ab_channel=JohannesMilke';
+              controller.load(YoutubePlayer.convertUrlToId(url)!);
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }
